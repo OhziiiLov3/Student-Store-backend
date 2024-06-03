@@ -21,6 +21,7 @@ model Product {
   price       Float
   image_url   String
   category    String
+  orderItems OrderItem[]
 }
 
 
@@ -30,5 +31,15 @@ model Order {
   totalPrice  Int
   status      String
   createdAt   DateTime @default(now())
+  orderItems OrderItem[]
 }
 
+model OrderItem {
+  order_item_id Int      @id @default(autoincrement())
+  order_id      Int
+  product_id    Int
+  quantity      Int
+  price         Float
+  order         Order     @relation(fields: [order_id], references: [order_id])
+  product       Product   @relation(fields: [product_id], references: [id])
+}

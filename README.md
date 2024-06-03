@@ -12,18 +12,18 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 
 - [x] **Database Creation**: Set up a Postgres database to store information about products and orders.
-  - [ ] Use the provided schema to create tables for `products`, `orders`, and `order_items`.
+  - [x] Use the provided schema to create tables for `products`, `orders`, and `order_items`.
 - [x] **Products Model**: Develop a model to represent individual items available in the store. 
   - [x] This model should include attributes such as `id`, `name`, `description`, `price`, `image_url`, and `category`.
   - [x] Implement methods for CRUD operations on products.
-  - [ ] Ensure transaction handling for the deletion of products to also delete related `order_items`
+  - [x] Ensure transaction handling for the deletion of products to also delete related `order_items`
 - [x]**Orders Model**: Develop a model to manage orders. 
   - [x] This model should include attributes such as `order_id`, `customer_id`, `total_price`, `status`, and `created_at`.
   - [x] Implement methods for creating, fetching, updating, and deleting orders.
-  - [ ] Ensure transaction handling for the deletion of orders to also delete related `order_items`
-- [ ] **Order Items Model**: Develop a model to represent the items within an order. 
-  - [ ] This model should include attributes such as `order_item_id`, `order_id`, `product_id`, `quantity`, and `price`.
-  - [ ] Implement methods for fetching and creating order items.
+  - [x] Ensure transaction handling for the deletion of orders to also delete related `order_items`
+- [x] **Order Items Model**: Develop a model to represent the items within an order. 
+  - [x] This model should include attributes such as `order_item_id`, `order_id`, `product_id`, `quantity`, and `price`.
+  - [x] Implement methods for fetching and creating order items.
 - [x] **API Endpoints**
   - [x] **Product Endpoints**:
     - [x] `GET /products`: Fetch a list of all products.

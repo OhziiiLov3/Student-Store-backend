@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const orderItemsRoutes = require('./routes/orderItemsRoutes');
+
 const PORT = 3000;
 
 
@@ -17,6 +19,7 @@ app.use(express.json());
 // Routers to api
 app.use('/api', productRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', orderItemsRoutes);
 
 
 

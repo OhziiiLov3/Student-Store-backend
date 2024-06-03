@@ -5,17 +5,21 @@ const prisma = new PrismaClient();
 
 // Create Order
 const createOrder = async (req, res) => {
-  const { customerId, totalPrice, status } = req.body;
-  console.log(req.body);
+  const { customerId, totalPrice, status, orderItems } = req.body;
   try {
     const order = await prisma.order.create({
-      data: { customerId, totalPrice, status },
+      data: {
+        customerId,
+        totalPrice,
+        status,
+        },
     });
     res.json(order);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 // Get All Orders
 const getAllOrders = async (req, res) => {
   try {
@@ -33,6 +37,9 @@ const getOrderById = async (req, res) => {
   try {
     const order = await prisma.order.findUnique({
       where: { order_id: parseInt(id) },
+      include: {
+        orderItems: true, // Include associated order items
+      },
     });
     if (order) {
       res.json(order);
