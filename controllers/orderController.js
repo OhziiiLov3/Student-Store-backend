@@ -20,6 +20,32 @@ const createOrder = async (req, res) => {
   }
 };
 
+// Caluclate total price of an order 
+
+const calculateOrderTotal = async (req, res) => {
+  const { order_id } = req.params;
+
+  try {
+    // Find the order by its ID and include all associated order items
+    const order = await prisma.order.findUnique({
+      where: { order_id: parseInt(order_id) },
+      include: { orderItems: true },
+    });
+
+    // Calculate total price by summing up the prices of all order items
+    let totalPrice = 0;
+    order.orderItems.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+
+    res.json({ total_price: totalPrice });
+  } catch (error) {
+    console.error("Error calculating order total:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+
 // Get All Orders
 const getAllOrders = async (req, res) => {
   try {
@@ -79,11 +105,42 @@ const deleteOrder = async (req, res) => {
     }
 };
 
+const addItemsToOrder = async (req, res) => {
+  const { order_id } = req.params;
+  const { product_id, quantity, price } = req.body;
+
+  try {
+    const order = await prisma.order.findUnique({
+      where: { order_id: parseInt(order_id) },
+    });
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    const newOrderItem = await prisma.orderItem.create({
+      data: {
+        order_id: order.order_id,
+        product_id,
+        quantity,
+        price,
+      },
+    });
+
+    res.json(newOrderItem);
+  } catch (error) {
+    console.error("Error adding item to order:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 
 module.exports = {
   createOrder,
+  calculateOrderTotal,
   getAllOrders,
   getOrderById,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  addItemsToOrder
 };
