@@ -24,3 +24,11 @@ model Product {
 }
 
 
+model Order {
+  order_id    Int      @id @default(autoincrement())
+  customerId  Int
+  totalPrice  Int
+  status      String
+  createdAt   DateTime @default(now())
+}
+
