@@ -11,11 +11,11 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 #### CORE FEATURES
 
 
-- [ ] **Database Creation**: Set up a Postgres database to store information about products and orders.
+- [x] **Database Creation**: Set up a Postgres database to store information about products and orders.
   - [ ] Use the provided schema to create tables for `products`, `orders`, and `order_items`.
-- [ ] **Products Model**: Develop a model to represent individual items available in the store. 
-  - [ ] This model should include attributes such as `id`, `name`, `description`, `price`, `image_url`, and `category`.
-  - [ ] Implement methods for CRUD operations on products.
+- [x] **Products Model**: Develop a model to represent individual items available in the store. 
+  - [x] This model should include attributes such as `id`, `name`, `description`, `price`, `image_url`, and `category`.
+  - [x] Implement methods for CRUD operations on products.
   - [ ] Ensure transaction handling for the deletion of products to also delete related `order_items`
 - [ ]**Orders Model**: Develop a model to manage orders. 
   - [ ] This model should include attributes such as `order_id`, `customer_id`, `total_price`, `status`, and `created_at`.
@@ -24,13 +24,13 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 - [ ] **Order Items Model**: Develop a model to represent the items within an order. 
   - [ ] This model should include attributes such as `order_item_id`, `order_id`, `product_id`, `quantity`, and `price`.
   - [ ] Implement methods for fetching and creating order items.
-- [ ] **API Endpoints**
-  - [ ] **Product Endpoints**:
-    - [ ] `GET /products`: Fetch a list of all products.
-    - [ ] `GET /products/:id`: Fetch details of a specific product by its ID.
-    - [ ] `POST /products`: Add a new product to the database.
-    - [ ] `PUT /products/:id`: Update the details of an existing product.
-    - [ ] `DELETE /products/:id`: Remove a product from the database.
+- [x] **API Endpoints**
+  - [x] **Product Endpoints**:
+    - [x] `GET /products`: Fetch a list of all products.
+    - [x] `GET /products/:id`: Fetch details of a specific product by its ID.
+    - [x] `POST /products`: Add a new product to the database.
+    - [x] `PUT /products/:id`: Update the details of an existing product.
+    - [x] `DELETE /products/:id`: Remove a product from the database.
   - [ ] **Order Endpoints**:
     - [ ] `GET /orders`: Fetch a list of all orders.
     - [ ] `GET /orders/:order_id`: Fetch details of a specific order by its ID, including the order items.
