@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const orderItemsRoutes = require('./routes/orderItemsRoutes');
 
 const PORT = 3000;
 
-
+app.use(cors()); // Enable CORS
 app.use(express.json());
 
 
